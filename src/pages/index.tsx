@@ -1,10 +1,18 @@
 import { Instagram, Pinterest, Twitter } from "@mui/icons-material";
-import { Button, Typography } from "@mui/material";
+import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Home: NextPage = () => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const router = useRouter();
+
+  function handleCityClick(city: string) {
+    router.push("/city/" + city);
+  }
+
   return (
     <>
       <Head>
@@ -14,19 +22,37 @@ const Home: NextPage = () => {
         style={{
           backgroundImage: "url(/food-background.png)",
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
           height: "calc(100vh - 64px - 50px)",
+          justifyContent: "center",
         }}
       >
         <Typography variant="h3" color="white">
           Search for your favorite food online
         </Typography>
-        <Link href="/home">
-          <Button variant="contained">Start Here</Button>
-        </Link>
         <div style={{ marginBottom: 20 }} />
+        <Button
+          variant="contained"
+          size="large"
+          onClick={(e) => setAnchorEl(e.currentTarget)}
+        >
+          Select City
+        </Button>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={() => setAnchorEl(null)}
+        >
+          <MenuItem onClick={() => handleCityClick("bangalore")}>
+            Bangalore
+          </MenuItem>
+          <MenuItem onClick={() => handleCityClick("delhi")}>Delhi</MenuItem>
+          <MenuItem onClick={() => handleCityClick("chennai")}>
+            Chennai
+          </MenuItem>
+          <MenuItem onClick={() => handleCityClick("mumbai")}>Mumbai</MenuItem>
+        </Menu>
       </div>
       <footer
         style={{
