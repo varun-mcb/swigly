@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-const Home: FC = () => {
+const Restaurants: FC = () => {
   return <div>hello</div>;
 };
 
-export default Home;
+export default Restaurants;
