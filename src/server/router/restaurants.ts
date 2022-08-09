@@ -1,19 +1,20 @@
 import { z } from 'zod';
-import { restaurantsNearYou } from '../constants/restaurantsNearYou';
+import { restaurants } from '../constants/restaurants';
 import { createRouter } from './context';
 
 export const restaurantsRouter = createRouter().query('all', {
   input: z
     .object({
       category: z
-        .enum(['near-you', 'biryani', 'north-indian', 'top-rated'])
+        .enum(['biryani', 'north-indian', 'top-rated', 'south-indian'])
         .nullish(),
     })
     .nullish(),
   resolve({ input }) {
-    if (input?.category === 'near-you') {
-      return restaurantsNearYou;
+    if (!input?.category) {
+      return [];
     }
-    return [];
+    const selectedRestaurants = restaurants[input.category];
+    return selectedRestaurants;
   },
 });

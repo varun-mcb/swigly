@@ -29,11 +29,6 @@ const City: FC = () => {
         </Typography>
         <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
           <CategoryCard
-            href={`/city/${query.city}/near-you`}
-            imageUrl="/category-near-you.webp"
-            title="Offers Near You"
-          />
-          <CategoryCard
             href={`/city/${query.city}/top-rated`}
             imageUrl="/category-top-rated.png"
             title="Top Rated"
@@ -47,6 +42,11 @@ const City: FC = () => {
             href={`/city/${query.city}/north-indian`}
             imageUrl="/category-north-indian.webp"
             title="North Indian"
+          />
+          <CategoryCard
+            href={`/city/${query.city}/south-indian`}
+            imageUrl="/category-south-indian.webp"
+            title="South Indian"
           />
         </div>
       </div>
