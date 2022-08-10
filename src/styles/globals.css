@@ -1,6 +1,9 @@
 .p-30 {
   padding: 30px;
 }
+.v-spacer-10 {
+  margin-bottom: 10px;
+}
 .v-spacer-20 {
   margin-bottom: 20px;
 }
@@ -9,6 +12,15 @@
 }
 .flex {
   display: flex;
+}
+.align-items-center {
+  align-items: center;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-space-between {
+  justify-content: space-between;
 }
 .flex1 {
   flex: 1;

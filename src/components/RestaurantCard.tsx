@@ -3,6 +3,7 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  Rating,
   Tooltip,
   Typography,
 } from '@mui/material';
@@ -38,12 +39,23 @@ export const RestaurantCard: FC<Props> = (props) => {
               <Typography
                 component="div"
                 variant="caption"
-                className="capitalize"
+                className="capitalize v-spacer-10"
                 noWrap
               >
                 {cuisines}
               </Typography>
             </Tooltip>
+            <div className="flex align-items-center justify-content-space-between">
+              <Rating
+                size="small"
+                value={Number(restaurant.avgRating)}
+                precision={0.2}
+                readOnly
+              />
+              <Typography variant="caption" color="text.secondary">
+                {restaurant.costForTwoString}
+              </Typography>
+            </div>
           </CardContent>
         </CardActionArea>
       </Link>
