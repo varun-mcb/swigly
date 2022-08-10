@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
 
-import { CategoryList } from '../../../components/CategoryList';
+import { RestaurantsUnderCategory } from '../../../components/RestaurantsUnderCategory';
 import { categorySchema } from '../../../schemas/category';
 import { execIfBrowser } from '../../../utils/browserUtils';
 
@@ -28,7 +28,7 @@ const Category: FC = () => {
     return null;
   }
 
-  return <CategoryList city={query.city} category={result.data} />;
+  return <RestaurantsUnderCategory city={query.city} category={result.data} />;
 };
 
 export default Category;

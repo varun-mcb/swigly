@@ -5,7 +5,7 @@ import type { FC } from 'react';
 import { CategoryCard } from '../../../components/CategoryCard';
 
 const City: FC = () => {
-  const { query } = useRouter();
+  const { query, asPath } = useRouter();
 
   return (
     <div style={{ padding: 40 }}>
@@ -30,22 +30,22 @@ const City: FC = () => {
         </Typography>
         <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
           <CategoryCard
-            href={`/city/${query.city}/top-rated`}
+            href={`${asPath}/top-rated`}
             imageUrl="/category-top-rated.png"
             title="Top Rated"
           />
           <CategoryCard
-            href={`/city/${query.city}/biryani`}
+            href={`${asPath}/biryani`}
             imageUrl="/category-biryani.webp"
             title="Biryanis"
           />
           <CategoryCard
-            href={`/city/${query.city}/north-indian`}
+            href={`${asPath}/north-indian`}
             imageUrl="/category-north-indian.webp"
             title="North Indian"
           />
           <CategoryCard
-            href={`/city/${query.city}/south-indian`}
+            href={`${asPath}/south-indian`}
             imageUrl="/category-south-indian.webp"
             title="South Indian"
           />

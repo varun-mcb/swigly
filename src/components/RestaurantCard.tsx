@@ -16,21 +16,22 @@ type Props = {
 };
 
 export const RestaurantCard: FC<Props> = (props) => {
-  const cuisines = props.restaurant.data.data.cuisines.join(', ');
+  const restaurant = props.restaurant.data.data;
+  const cuisines = restaurant.cuisines.join(', ');
   return (
     <Card sx={{ width: 280, cursor: 'pointer' }}>
-      <Link href={'/'}>
+      <Link href={`/restaurant/${restaurant.uuid}`}>
         <CardActionArea>
           <CardMedia
             component="img"
             height="140"
             image={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${props.restaurant.data.data.cloudinaryImageId}`}
-            alt={props.restaurant.data.data.name}
+            alt={restaurant.name}
           />
           <CardContent>
-            <Tooltip title={props.restaurant.data.data.name}>
+            <Tooltip title={restaurant.name}>
               <Typography gutterBottom variant="h6" component="div" noWrap>
-                {props.restaurant.data.data.name}
+                {restaurant.name}
               </Typography>
             </Tooltip>
             <Tooltip title={cuisines}>

@@ -14,7 +14,7 @@ const categoryText: Record<CategoryType, string> = {
 
 type Props = { category: CategoryType; city: string };
 
-export const CategoryList: FC<Props> = (props) => {
+export const RestaurantsUnderCategory: FC<Props> = (props) => {
   const { isLoading, isError, data } = trpc.useQuery([
     'restaurants.all',
     { category: props.category },
