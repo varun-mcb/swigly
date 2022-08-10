@@ -1,5 +1,5 @@
 import Router from "next/router";
-import { FC } from "react";
+import type { FC } from "react";
 
 const CityPage: FC = () => {
   if (typeof window !== "undefined") {

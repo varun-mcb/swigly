@@ -1,19 +1,21 @@
 // src/pages/_app.tsx
-import { ShoppingCart } from "@mui/icons-material";
+import { ShoppingCart } from '@mui/icons-material';
 import {
   AppBar,
   Button,
   createTheme,
+  StyledEngineProvider,
   ThemeProvider,
   Toolbar,
   Typography,
-} from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
-import { withTRPC } from "@trpc/next";
-import type { AppType } from "next/dist/shared/lib/utils";
-import Link from "next/link";
-import superjson from "superjson";
-import type { AppRouter } from "../server/router";
+} from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import { withTRPC } from '@trpc/next';
+import type { AppType } from 'next/dist/shared/lib/utils';
+import Link from 'next/link';
+import superjson from 'superjson';
+import type { AppRouter } from '../server/router';
+import '../styles/globals.css';
 
 const theme = createTheme();
 
@@ -23,33 +25,35 @@ const MyApp: AppType = ({
 }) => {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppBar position="static">
-          <Toolbar>
-            <Link href="/">
-              <Typography variant="h6" sx={{ cursor: "pointer" }}>
-                Swigly
-              </Typography>
-            </Link>
-            <div style={{ flex: 1 }}></div>
-            <Link href="/cart">
-              <Button color="inherit">
-                <ShoppingCart fontSize="small" style={{ marginRight: 10 }} />
-                Cart
-              </Button>
-            </Link>
-          </Toolbar>
-        </AppBar>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AppBar position="static">
+            <Toolbar>
+              <Link href="/">
+                <Typography variant="h6" sx={{ cursor: 'pointer' }}>
+                  Swigly
+                </Typography>
+              </Link>
+              <div style={{ flex: 1 }}></div>
+              <Link href="/cart">
+                <Button color="inherit">
+                  <ShoppingCart fontSize="small" style={{ marginRight: 10 }} />
+                  Cart
+                </Button>
+              </Link>
+            </Toolbar>
+          </AppBar>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </StyledEngineProvider>
     </>
   );
 };
 
 const getBaseUrl = () => {
-  if (typeof window !== "undefined") {
-    return "";
+  if (typeof window !== 'undefined') {
+    return '';
   }
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
 

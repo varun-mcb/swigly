@@ -1,23 +1,34 @@
 import { useRouter } from 'next/router';
-import { FC } from 'react';
+import type { FC } from 'react';
+
 import { CategoryList } from '../../../components/CategoryList';
+import { categorySchema } from '../../../schemas/category';
+import { execIfBrowser } from '../../../utils/browserUtils';
 
 const Category: FC = () => {
   const { query, push, isReady } = useRouter();
-  console.log({ query });
 
   if (!isReady) {
     return null;
   }
 
-  if (typeof query.category !== 'string') {
-    if (typeof window !== 'undefined') {
-      push(`/city/${query.city}`);
-    }
+  if (typeof query.city !== 'string') {
+    execIfBrowser(() => {
+      push(`/`);
+    });
+
     return null;
   }
 
-  return <CategoryList category={query.category} />;
+  const result = categorySchema.safeParse(query.category);
+  if (!result.success) {
+    execIfBrowser(() => {
+      push(`/city/${query.city}`);
+    });
+    return null;
+  }
+
+  return <CategoryList city={query.city} category={result.data} />;
 };
 
 export default Category;

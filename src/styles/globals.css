@@ -1,0 +1,15 @@
+.p-30 {
+  padding: 30px;
+}
+.flex {
+  display: flex;
+}
+.flex1 {
+  flex: 1;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+.bold {
+  font-weight: bold;
+}

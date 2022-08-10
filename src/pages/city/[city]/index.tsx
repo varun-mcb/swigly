@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { CategoryCard } from '../../../components/CategoryCard';
 
 const City: FC = () => {
