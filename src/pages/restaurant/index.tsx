@@ -3,7 +3,7 @@ import type { FC } from 'react';
 
 import { execIfBrowser } from '../../utils/browserUtils';
 
-const EmptyRestaurantId: FC = () => {
+const FallbackRestaurantPage: FC = () => {
   const router = useRouter();
   execIfBrowser(() => {
     router.push('/');
@@ -11,4 +11,4 @@ const EmptyRestaurantId: FC = () => {
   return null;
 };
 
-export default EmptyRestaurantId;
+export default FallbackRestaurantPage;

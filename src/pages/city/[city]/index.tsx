@@ -4,7 +4,7 @@ import type { FC } from 'react';
 
 import { CategoryCard } from '../../../components/CategoryCard';
 
-const City: FC = () => {
+const CityPage: FC = () => {
   const { query, asPath } = useRouter();
 
   return (
@@ -55,4 +55,4 @@ const City: FC = () => {
   );
 };
 
-export default City;
+export default CityPage;

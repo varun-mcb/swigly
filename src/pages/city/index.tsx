@@ -1,11 +1,11 @@
-import Router from "next/router";
-import type { FC } from "react";
+import Router from 'next/router';
+import type { FC } from 'react';
 
-const CityPage: FC = () => {
-  if (typeof window !== "undefined") {
-    Router.push("/");
+const FallbackCityPage: FC = () => {
+  if (typeof window !== 'undefined') {
+    Router.push('/');
   }
   return null;
 };
 
-export default CityPage;
+export default FallbackCityPage;

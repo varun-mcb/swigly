@@ -1,7 +1,7 @@
 import { Breadcrumbs, Grid, Link, Skeleton, Typography } from '@mui/material';
 import type { FC } from 'react';
 
-import type { CategoryType } from '../schemas/category';
+import type { CategoryType } from '../schemas/categorySchemas';
 import { trpc } from '../utils/trpc';
 import { RestaurantCard } from './RestaurantCard';
 

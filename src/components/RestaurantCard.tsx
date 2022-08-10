@@ -10,7 +10,7 @@ import {
 import Link from 'next/link';
 import type { FC } from 'react';
 
-import type { Restaurant } from '../server/constants/restaurants';
+import type { Restaurant } from '../server/constants/restaurantsData';
 
 type Props = {
   restaurant: Restaurant;
@@ -21,7 +21,7 @@ export const RestaurantCard: FC<Props> = (props) => {
   const cuisines = restaurant.cuisines.join(', ');
   return (
     <Card sx={{ width: 280, cursor: 'pointer' }}>
-      <Link href={`/restaurant/${restaurant.uuid}`}>
+      <Link href={`/restaurant/${restaurant.id}`}>
         <CardActionArea>
           <CardMedia
             component="img"
