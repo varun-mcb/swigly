@@ -12,6 +12,7 @@ import { VegIcon } from '../icons/vegIcon';
 type Props = {
   restaurantId: string;
   item: RestaurantMenuItem;
+  city: string;
 };
 
 export const MenuItem: FC<Props> = (props) => {
@@ -22,6 +23,7 @@ export const MenuItem: FC<Props> = (props) => {
     appendItem({
       restaurantId,
       menuItemId: item.id,
+      city: props.city,
     });
   };
 
@@ -29,6 +31,7 @@ export const MenuItem: FC<Props> = (props) => {
     removeItem({
       restaurantId,
       menuItemId: item.id,
+      city: props.city,
     });
   };
 

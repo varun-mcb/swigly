@@ -4,12 +4,14 @@ import { EmptyCart } from '../components/Cart/EmptyCart';
 import { useCartStore } from '../store/cartStore';
 
 const CartPage: FC = () => {
-  const { menuItems } = useCartStore();
+  const { menuItems, restaurantId, city } = useCartStore();
   const items = Object.values(menuItems).filter(Boolean).length;
-  if (!items) {
+
+  if (!items || !restaurantId || !city) {
     return <EmptyCart />;
   }
-  return <Cart />;
+
+  return <Cart city={city} menuItems={menuItems} restaurantId={restaurantId} />;
 };
 
 export default CartPage;

@@ -1,6 +1,8 @@
-import { Skeleton, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
+
+import { Loading } from '../../../../components/Loading';
 import { RestaurantDetails } from '../../../../components/RestaurantDetails/RestaurantDetails';
 import { trpc } from '../../../../utils/trpc';
 
@@ -13,7 +15,7 @@ const RestaurantPage: FC = () => {
   ]);
 
   if (isLoading) {
-    return <Skeleton variant="rounded" width={400} height={300} />;
+    return <Loading />;
   }
 
   if (isError || !data) {

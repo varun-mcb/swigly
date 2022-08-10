@@ -43,7 +43,12 @@ export const RestaurantDetails: FC<Props> = (props) => {
       <div className="flex" style={{ maxWidth: 800, margin: 'auto' }}>
         <div>
           {Object.values(menu.items).map((item) => (
-            <MenuItem key={item.id} restaurantId={restaurant.id} item={item} />
+            <MenuItem
+              city={props.city}
+              key={item.id}
+              restaurantId={restaurant.id}
+              item={item}
+            />
           ))}
         </div>
         <div

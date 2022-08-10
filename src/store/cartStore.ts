@@ -5,11 +5,13 @@ import { execIfBrowser } from '../utils/browserUtils';
 type MenuItemPayload = {
   restaurantId: string;
   menuItemId: number;
+  city: string;
 };
 
 type CartState = {
   restaurantId?: string;
   menuItems: Record<string, number>;
+  city?: string;
   appendItem: (payload: MenuItemPayload) => void;
   removeItem: (payload: MenuItemPayload) => void;
 };
@@ -39,14 +41,16 @@ export const useCartStore = create<CartState>((set) => {
   return {
     restaurantId: stateFromStorage.restaurantId,
     menuItems: stateFromStorage.menuItems,
+    city: stateFromStorage.city,
     appendItem: (payload: MenuItemPayload) => {
       return set((state) => {
         if (state.restaurantId !== payload.restaurantId) {
-          const state = {
+          const state: CartStateValues = {
             restaurantId: payload.restaurantId,
             menuItems: {
               [payload.menuItemId]: 1,
             },
+            city: payload.city,
           };
           persist(state);
           return state;
@@ -60,7 +64,11 @@ export const useCartStore = create<CartState>((set) => {
           menuItems[payload.menuItemId] = 1;
         }
 
-        persist({ restaurantId: payload.restaurantId, menuItems });
+        persist({
+          restaurantId: payload.restaurantId,
+          menuItems,
+          city: payload.city,
+        });
 
         return {
           menuItems,

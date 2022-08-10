@@ -1,8 +1,9 @@
-import { Breadcrumbs, Grid, Link, Skeleton, Typography } from '@mui/material';
+import { Breadcrumbs, Grid, Link, Typography } from '@mui/material';
 import type { FC } from 'react';
 
 import type { CategoryType } from '../schemas/categorySchemas';
 import { trpc } from '../utils/trpc';
+import { Loading } from './Loading';
 import { RestaurantCard } from './RestaurantCard';
 
 const categoryText: Record<CategoryType, string> = {
@@ -19,15 +20,19 @@ export const RestaurantsUnderCategory: FC<Props> = (props) => {
     'restaurants.all',
     { category: props.category },
   ]);
+
   if (isLoading) {
-    return <Skeleton variant="rounded" width={400} height={300} />;
+    return <Loading />;
   }
+
   if (isError) {
     return <div>Something went wrong...</div>;
   }
+
   if (!data || data?.length === 0) {
     return <Typography>No restaurants available right now</Typography>;
   }
+
   return (
     <div>
       <div className="p-30" style={{ backgroundColor: '#494d60' }}>
