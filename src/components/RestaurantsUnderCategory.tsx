@@ -62,7 +62,7 @@ export const RestaurantsUnderCategory: FC<Props> = (props) => {
       <Grid className="p-30" container spacing={4}>
         {data.map((restaurant) => (
           <Grid item key={restaurant.data.data.uuid}>
-            <RestaurantCard restaurant={restaurant} />
+            <RestaurantCard city={props.city} restaurant={restaurant} />
           </Grid>
         ))}
       </Grid>

@@ -14,6 +14,7 @@ import type { Restaurant } from '../server/constants/restaurantsData';
 
 type Props = {
   restaurant: Restaurant;
+  city: string;
 };
 
 export const RestaurantCard: FC<Props> = (props) => {
@@ -21,7 +22,7 @@ export const RestaurantCard: FC<Props> = (props) => {
   const cuisines = restaurant.cuisines.join(', ');
   return (
     <Card sx={{ width: 280, cursor: 'pointer' }}>
-      <Link href={`/restaurant/${restaurant.id}`}>
+      <Link href={`/city/${props.city}/restaurant/${restaurant.id}`}>
         <CardActionArea>
           <CardMedia
             component="img"

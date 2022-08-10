@@ -1,8 +1,8 @@
 import { Skeleton, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
-import { RestaurantDetails } from '../../components/RestaurantDetails';
-import { trpc } from '../../utils/trpc';
+import { RestaurantDetails } from '../../../../components/RestaurantDetails';
+import { trpc } from '../../../../utils/trpc';
 
 const RestaurantPage: FC = () => {
   const { query } = useRouter();
