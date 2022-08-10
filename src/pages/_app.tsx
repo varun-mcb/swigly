@@ -1,8 +1,6 @@
 // src/pages/_app.tsx
-import { ShoppingCart } from '@mui/icons-material';
 import {
   AppBar,
-  Button,
   createTheme,
   StyledEngineProvider,
   ThemeProvider,
@@ -17,7 +15,17 @@ import superjson from 'superjson';
 import type { AppRouter } from '../server/router';
 import '../styles/globals.css';
 
-const theme = createTheme();
+const theme = createTheme({
+  components: {
+    MuiRating: {
+      styleOverrides: {
+        iconEmpty: {
+          color: '#faaf00',
+        },
+      },
+    },
+  },
+});
 
 const MyApp: AppType = ({
   Component,
@@ -36,12 +44,12 @@ const MyApp: AppType = ({
                 </Typography>
               </Link>
               <div style={{ flex: 1 }}></div>
-              <Link href="/cart">
+              {/* <Link href="/cart">
                 <Button color="inherit">
                   <ShoppingCart fontSize="small" style={{ marginRight: 10 }} />
                   Cart
                 </Button>
-              </Link>
+              </Link> */}
             </Toolbar>
           </AppBar>
           <Component {...pageProps} />

@@ -11,6 +11,7 @@ import Link from 'next/link';
 import type { FC } from 'react';
 
 import type { Restaurant } from '../server/constants/restaurantsData';
+import { getCloudinaryUrl } from '../utils/cloudinaryUrl';
 
 type Props = {
   restaurant: Restaurant;
@@ -27,7 +28,9 @@ export const RestaurantCard: FC<Props> = (props) => {
           <CardMedia
             component="img"
             height="140"
-            image={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${props.restaurant.data.data.cloudinaryImageId}`}
+            image={getCloudinaryUrl(
+              props.restaurant.data.data.cloudinaryImageId,
+            )}
             alt={restaurant.name}
           />
           <CardContent>

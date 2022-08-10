@@ -1,14 +1,15 @@
 import { z } from 'zod';
 
-export const menuSchema = z.object({
+export const restaurantMenuSchema = z.object({
   data: z.object({
     id: z.string(),
     name: z.string(),
     area: z.string(),
     areaPostalCode: z.string(),
-    areaSlug: z.string(),
+    city: z.string(),
     locality: z.string(),
     avgRating: z.number(),
+    totalRatings: z.number(),
     cloudinaryImageId: z.string().optional(),
     costForTwoMsg: z.string(),
     cuisines: z.array(z.string()),
@@ -23,10 +24,14 @@ export const menuSchema = z.object({
           recommended: z.number(),
           isVeg: z.number(),
           isBestSeller: z.boolean(),
+          price: z.number(),
         }),
       ),
     }),
   }),
 });
 
-export type Menu = z.infer<typeof menuSchema>;
+export type RestaurantMenu = z.infer<typeof restaurantMenuSchema>;
+
+export type RestaurantMenuItem =
+  RestaurantMenu['data']['menu']['items'][string];

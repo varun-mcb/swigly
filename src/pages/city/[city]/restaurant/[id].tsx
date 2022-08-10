@@ -1,14 +1,14 @@
 import { Skeleton, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
-import { RestaurantDetails } from '../../../../components/RestaurantDetails';
+import { RestaurantDetails } from '../../../../components/RestaurantDetails/RestaurantDetails';
 import { trpc } from '../../../../utils/trpc';
 
 const RestaurantPage: FC = () => {
   const { query } = useRouter();
 
   const { isLoading, isError, data } = trpc.useQuery([
-    'menus.all',
+    'restaurants.byId',
     { restaurantId: query.id as string },
   ]);
 
@@ -20,7 +20,9 @@ const RestaurantPage: FC = () => {
     return <Typography>Something went wrong</Typography>;
   }
 
-  return <RestaurantDetails menu={data} />;
+  return (
+    <RestaurantDetails city={query.city as string} restaurantMenu={data} />
+  );
 };
 
 export default RestaurantPage;
