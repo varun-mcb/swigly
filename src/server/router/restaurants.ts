@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { categorySchema } from '../../schemas/category';
-import { restaurants } from '../constants/restaurants';
+import { restaurantsByCategory } from '../constants/restaurants';
 import { createRouter } from './context';
 
 export const restaurantsRouter = createRouter().query('all', {
@@ -14,7 +14,7 @@ export const restaurantsRouter = createRouter().query('all', {
     if (!input?.category) {
       return [];
     }
-    const selectedRestaurants = restaurants[input.category];
+    const selectedRestaurants = restaurantsByCategory[input.category];
     return selectedRestaurants;
   },
 });

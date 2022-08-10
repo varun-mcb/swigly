@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import type { FC } from 'react';
+
 import { CategoryCard } from '../../../components/CategoryCard';
 
 const City: FC = () => {
@@ -34,7 +35,7 @@ const City: FC = () => {
             title="Top Rated"
           />
           <CategoryCard
-            href={`/city/${query.city}/biryanis`}
+            href={`/city/${query.city}/biryani`}
             imageUrl="/category-biryani.webp"
             title="Biryanis"
           />

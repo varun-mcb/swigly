@@ -6686,9 +6686,11 @@ export const biryaaniRestaurants = allRestaurants.filter((restaurant) =>
   restaurant.data.data.cuisines.includes('Biryani'),
 );
 
-export const restaurants = {
+export const restaurantsByCategory = {
   'south-indian': southIndianRestaurants,
   'north-indian': northIndianRestaurants,
   'top-rated': topRatedRestaurants,
   biryani: biryaaniRestaurants,
 } as const;
+
+export type Restaurant = typeof allRestaurants[number];
