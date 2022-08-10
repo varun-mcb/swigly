@@ -12,6 +12,8 @@ import { withTRPC } from '@trpc/next';
 import type { AppType } from 'next/dist/shared/lib/utils';
 import Link from 'next/link';
 import superjson from 'superjson';
+
+import { CartLink } from '../components/CartLink';
 import type { AppRouter } from '../server/router';
 import '../styles/globals.css';
 
@@ -27,10 +29,7 @@ const theme = createTheme({
   },
 });
 
-const MyApp: AppType = ({
-  Component,
-  pageProps: { session, ...pageProps },
-}) => {
+const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
   return (
     <>
       <StyledEngineProvider injectFirst>
@@ -44,12 +43,7 @@ const MyApp: AppType = ({
                 </Typography>
               </Link>
               <div style={{ flex: 1 }}></div>
-              {/* <Link href="/cart">
-                <Button color="inherit">
-                  <ShoppingCart fontSize="small" style={{ marginRight: 10 }} />
-                  Cart
-                </Button>
-              </Link> */}
+              <CartLink />
             </Toolbar>
           </AppBar>
           <Component {...pageProps} />

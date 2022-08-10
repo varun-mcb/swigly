@@ -2,6 +2,7 @@ import { Breadcrumbs, Link, Typography } from '@mui/material';
 import type { FC } from 'react';
 
 import type { RestaurantMenu } from '../../schemas/restaurantMenuSchemas';
+import { CartLink } from '../CartLink';
 import { Header } from './Header';
 import { MenuItem } from './MenuItem';
 
@@ -39,10 +40,23 @@ export const RestaurantDetails: FC<Props> = (props) => {
     <div>
       {breadcrumbs}
       <Header restaurantMenu={props.restaurantMenu} />
-      <div className="p-30" style={{ width: 648 }}>
-        {Object.values(menu.items).map((item) => (
-          <MenuItem key={item.id} item={item} />
-        ))}
+      <div className="flex" style={{ maxWidth: 800, margin: 'auto' }}>
+        <div>
+          {Object.values(menu.items).map((item) => (
+            <MenuItem key={item.id} restaurantId={restaurant.id} item={item} />
+          ))}
+        </div>
+        <div
+          style={{
+            position: 'sticky',
+            alignSelf: 'flex-start',
+            top: 30,
+            marginLeft: 20,
+            marginTop: 30,
+          }}
+        >
+          <CartLink />
+        </div>
       </div>
     </div>
   );

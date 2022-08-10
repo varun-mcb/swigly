@@ -1,17 +1,39 @@
-import { Button, Skeleton, Typography } from '@mui/material';
+import { Add, Remove } from '@mui/icons-material';
+import { Button, IconButton, Paper, Skeleton, Typography } from '@mui/material';
 import Image from 'next/image';
 import type { FC } from 'react';
+
 import type { RestaurantMenuItem } from '../../schemas/restaurantMenuSchemas';
+import { useCartStore } from '../../store/cartStore';
 import { getCloudinaryUrl } from '../../utils/cloudinaryUrl';
 import { NonVegIcon } from '../icons/nonVegIcon';
 import { VegIcon } from '../icons/vegIcon';
 
 type Props = {
+  restaurantId: string;
   item: RestaurantMenuItem;
 };
 
 export const MenuItem: FC<Props> = (props) => {
-  const { item } = props;
+  const { item, restaurantId } = props;
+  const { appendItem, removeItem, menuItems } = useCartStore();
+
+  const handleAdd = () => {
+    appendItem({
+      restaurantId,
+      menuItemId: item.id,
+    });
+  };
+
+  const handleRemove = () => {
+    removeItem({
+      restaurantId,
+      menuItemId: item.id,
+    });
+  };
+
+  const addedItemsCount = menuItems[item.id] ?? 0;
+
   return (
     <div
       style={{
@@ -60,10 +82,27 @@ export const MenuItem: FC<Props> = (props) => {
             animation={false}
           />
         )}
-        <div className="mb-10"></div>
-        <Button variant="contained" color="success">
-          Add
-        </Button>
+        <div className="mb-10" />
+        {addedItemsCount > 0 ? (
+          <Paper
+            elevation={1}
+            style={{ display: 'flex', alignItems: 'center' }}
+          >
+            <IconButton onClick={handleRemove}>
+              <Remove />
+            </IconButton>
+            <Typography style={{ marginLeft: 5, marginRight: 5 }}>
+              {addedItemsCount}
+            </Typography>
+            <IconButton onClick={handleAdd}>
+              <Add />
+            </IconButton>
+          </Paper>
+        ) : (
+          <Button variant="contained" color="success" onClick={handleAdd}>
+            Add
+          </Button>
+        )}
       </div>
     </div>
   );
