@@ -1,8 +1,6 @@
 // src/server/router/context.ts
-import * as trpc from "@trpc/server";
-import type * as trpcNext from "@trpc/server/adapters/next";
-
-import { prisma } from "../db/client";
+import * as trpc from '@trpc/server';
+import type * as trpcNext from '@trpc/server/adapters/next';
 
 export const createContext = async (
   opts?: trpcNext.CreateNextContextOptions,
@@ -10,13 +8,12 @@ export const createContext = async (
   const req = opts?.req;
   const res = opts?.res;
 
-  const session = {}
+  const session = {};
 
   return {
     req,
     res,
     session,
-    prisma,
   };
 };
 
